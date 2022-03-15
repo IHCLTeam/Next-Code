@@ -1,8 +1,23 @@
 .container {
-  padding: 0 2rem;
+  background-color: rgb(36, 88, 139);
+  position: absolute;
 }
 
-.main {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .main {
   min-height: 100vh;
   padding: 4rem 0;
   flex: 1;
@@ -113,4 +128,4 @@
     width: 100%;
     flex-direction: column;
   }
-}
+} */

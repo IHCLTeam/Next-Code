@@ -14,3 +14,54 @@ a {
 * {
   box-sizing: border-box;
 }
+.bgcolor {
+  background-color: #e2e2e2;
+}
+.containers {
+  background-color: rgb(248, 248, 248);
+  
+}
+.imagetext{
+  color: aliceblue;
+ font-size: xx-large;
+font-family: "Calibri-Bold";
+ position: absolute;
+ text-shadow: 1px 5px 10px #000000;
+ top:24%;
+ left: 40%;
+ z-index:1;
+}
+/* .imagedesign{
+  background: rgb(223, 49, 49);
+  opacity: 0.3;
+  position: absolute;
+    top: 0;
+    left:0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+ 
+} */
+
+.pdfbutton{
+ background-image: linear-gradient( #002b49, #0c5d90);
+ color: aliceblue;
+ cursor: pointer;
+
+}
+
+.footergrid{
+  grid: 1;
+}
+.cardimage{
+  background-image: linear-gradient( #002b49, #0c5d90);
+  height: 80px;
+}
+
+.blogtitle{
+    float: right;
+}
+
+.hrcard{
+  background-image: linear-gradient( #002b49, #0c5d90);
+}
