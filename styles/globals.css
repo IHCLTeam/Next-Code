@@ -15,7 +15,7 @@ a {
   box-sizing: border-box;
 }
 .bgcolor {
-  background-color: #e2e2e2;
+  background-color: #813030;
 }
 .containers {
   background-color: rgb(248, 248, 248);
@@ -64,4 +64,64 @@ font-family: "Calibri-Bold";
 
 .hrcard{
   background-image: linear-gradient( #002b49, #0c5d90);
+}
+.booksign{
+  background-image:linear-gradient(to top, #7b5519, #aa7938 52%, #d29851);
+  color: aliceblue;
+  font-size:x-small;
+}
+
+
+
+.ClearBtn{
+  cursor: pointer;
+  color: #e2e2e2;
+}
+
+/* searchbar */
+
+.searchInputs {
+  margin-top: 105px;
+  display: flex;
+}
+
+.search input {
+  background-color: white;
+  border: 0;
+  border-radius: 2px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  font-size: 18px;
+  padding: 15px;
+  height: 30px;
+  width: 300px;
+}
+
+
+input:focus {
+  outline: none;
+}
+.searchIcon svg {
+  font-size: 40px;
+}
+
+.dataResult {
+  margin-top: 5px;
+  width: 300px;
+  height: 200px;
+  background-color: white;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.dataResult::-webkit-scrollbar {
+  display: none;
+}
+
+.dataResult .dataItem {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  color: black;
 }

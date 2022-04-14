@@ -12,16 +12,22 @@
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
     "@material-ui/data-grid": "^4.0.0-alpha.37",
+    "@material-ui/icons": "^4.11.2",
     "@material-ui/styles": "^4.11.4",
     "@mui/icons-material": "^5.5.0",
     "@mui/material": "^5.4.4",
     "@mui/styled-engine-sc": "^5.4.2",
     "@mui/styles": "^5.4.4",
+    "@react-pdf/renderer": "^2.1.1",
     "@sanity/client": "^3.1.0",
+    "axios": "^0.26.1",
+    "jspdf": "^2.5.1",
     "material-ui-color": "^1.2.0",
     "next": "12.1.0",
+    "next-auth": "^4.3.1",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-pdf": "^2.5.3"
   },
   "devDependencies": {
     "@types/node": "17.0.21",

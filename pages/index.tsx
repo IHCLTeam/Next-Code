@@ -1,9 +1,10 @@
+/* eslint-disable @next/next/no-title-in-document-head */
 
 import * as React from 'react';
 import Image from 'next/image'
 import type { GetStaticProps, NextPage } from 'next'
-import { getAll, getAllBlog, getAllBlogs, getBrands, getCareer, getCompany, getContact, getDevlopmnt, getFooter, getheadtwo, getInvestor, getJoinUS, getPressrom, getResponsibil, getSubfooter, witoutcard } from './lib/api';
-import { Typography } from '@mui/material';
+import { getAll, getAllBlog, getAllBlogs, getBrands, getCareer, getCompany, getContact, getDevlopmnt, getFooter, getheadtwo, getInvestor, getJoinUS, getPdf, getPressrom, getResponsibil, getSubfooter, witoutcard } from './lib/api';
+import { Button, IconButton, Link, Paper, styled, Typography } from '@mui/material';
 import CardItems from './components/carditms';
 import HrCards from './components/hrcards';
 import { Box, Grid } from '@mui/material';
@@ -22,6 +23,24 @@ import { Subfooter } from './components/footer/subfooter';
 import { JoinUs } from './components/footer/joinUs';
 import { FooterDown } from './components/footer/footerimg';
 import RowAndColumnSpacing from './components/pdfgrid';
+import CardLogic from './components/carditemlogic';
+import SearchData from "../Data.json";
+import SearchAppBar from './components/searchBar';
+import Head from 'next/head';
+
+import SamplePage from './components/loginpge';
+import BasicModal from './components/modalPopup';
+import DropdownAppBar from './components/dropdown';
+import { display } from '@mui/system';
+
+const Item = styled(Paper)(({ theme }) => ({
+
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    border: 'none'
+}));
+
 
 const useStyles = makeStyles((theme) => ({
     navbar: {
@@ -34,119 +53,164 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-const Home: NextPage = ({ blogs, cards, banner, bordernone, brands, company, investor, devlopmnt, responsibil, career, pressroom, contact, subfooter, joinus, footerdwn }: any) => {
+const Home: NextPage = ({ blogs, cards, banner, bordernone, brands, company, investor, devlopmnt, responsibil, career, pressroom, contact, subfooter, joinus, footerdwn, datapdf }: any) => {
     const classes = useStyles();
     return (
         <>
-            <div className="bgcolor">
-                <Typography sx={{ bgcolor: '#002b49', height: 40 }}>
-                    IHCL
-                </Typography>
-                {banner.map((banners: any) => {
-                    return (
-                        <>
-                            <Typography >
-                                <Typography className='imagedesign'>
-                                    <Image src={banners.image} loader={imageLoader} alt={banners.alt} height={442} width="1349" />
-                                </Typography>
-                                <Typography className='imagetext'>
-                                    {banners.slug}
-                                </Typography>   
-                            </Typography>
-                        </>
-                    )
-                })}
 
-                {bordernone.map((borderones: any) => {
-                    return (
-                        <>
-                            <div key={borderones.index}>
-                                <DataOne
-                                    title={borderones.title}
-                                    descripition={borderones.descripition} />
-                            </div>
-                        </>
-                    )
-                })}
+            <Head>
+                <title>
+                    IHCLtatapage
+                </title>
+                <meta name='descripition' content='An ihcltata webapplication' />
+                <meta http-httpEquiv='Content-Type' content='text/html; charset=utf-8' />
+                <meta name='viewport'
+                    content='width=device-width, intial-scale=1' />
+            </Head>
 
-                {blogs.map((blog: { slug: React.Key | null | undefined; title: string; image: string; text: string; }) => {
-                    return (<div key={blog.slug}>
-                        <CardItems
-                            title={blog.title}
-                            image={blog.image}
-                            text={blog.text} />
-                    </div>
-                    )
-                })}
-
-                <Box p={10}>
-                    <Typography sx={{ marginBottom: 5, display: 'flex', justifyContent: 'space-between' }} variant='h5'>
-                        <Box sx={{ color: '#012f4e', borderBottom: 4, marginTop: 3 }} >
-                            Initiatives and Impact
-                        </Box>
-                        <Box sx={{ color: '#012f4e', borderBottom: 1, fontSize: 15, marginTop: 5, marginRight: 3 }}>
-                            <a href='#'> <b> VIEW ALL</b></a>
-                        </Box>
-                    </Typography>
-                    <Grid container spacing={6}>
-
-                        {cards.map((cardss: { index: React.Key | null | undefined; title: string; text: string; text1: string; text2: string; }) => {
-                            return (
-                                <Grid key={cardss.index} item>
-                                    <HrCards
-                                        title={cardss.title}
-                                        descripition={cardss.text}
-                                        textOne={cardss.text1}
-                                        textTwo={cardss.text2} />
-                                </Grid>
-                            );
-                        })}
-                    </Grid>
-                </Box>
-                {/* <Typography sx={{ width: 330, marginBottom: 1, marginLeft: 10, borderBottom: 3 }} variant='h4'>
-                    Initiatives and Impact
-                </Typography> */}
-                <RowAndColumnSpacing /> <br /><br />
-
-                <footer className="containers " >
-                    <Grid >
-                        <Typography sx={{ fontSize: 12, display: 'flex', justifyContent: 'space-around', marginLeft: 8, width: '90%', padding: 10 }}   >
-                            <Typography sx={{ fontSize: 12 }}>
-                                Home
-                            </Typography>
-                            <Grid >
-                                <Brands data={brands} />
-                            </Grid>
-                            <Typography >
-                                <Careers data={career} />
-                            </Typography>
-                            <Typography>
-                                <Company data={company} />
-                            </Typography>
-                            <Typography>
-                                <Contact data={contact} />
-                            </Typography>
-                            <Typography>
-                                <Developments data={devlopmnt} />
-                            </Typography>
-                            <Typography>
-                                <Investors data={investor} />
-                            </Typography>
-                            <Typography>
-                                <PressRooms data={pressroom} />
-                            </Typography>
-                            <Typography>
-                                <Responsibility data={responsibil} />
-                            </Typography>
+            <div>
+                <Typography sx={{ bgcolor: '#e7e7e7' }}>
+                    <Typography sx={{ bgcolor: 'white', display: 'Flex' }}>
+                        <DropdownAppBar />
+                        <Typography sx={{ marginLeft: '75%' }}>
+                            <IconButton >
+                                <BasicModal />
+                            </IconButton>
                         </Typography>
-                    </Grid >
+                    </Typography>
+                    {banner.map((banners: any) => {
+                        return (
+                            <>
+                                <Typography >
+                                    <Typography className='imagedesign'>
+                                        <Image src={banners.image} loader={imageLoader} alt={banners.alt} height={442} width="1349" />
+                                    </Typography>
+                                    <Typography className='imagetext'>
+                                        {banners.slug}
+                                        <Typography sx={{ marginLeft: '10%', marginTop: '80%' }}>
+                                            <SearchAppBar data={SearchData} />
+                                        </Typography>
+                                    </Typography>
 
-                    <Subfooter data={subfooter} />
+                                </Typography>
+                            </>
+                        )
+                    })}
 
-                    <JoinUs data={joinus} />
+                  
 
-                    <FooterDown data={footerdwn} />
-                </footer>
+                    {bordernone.map((borderones: any) => {
+                        return (
+                            <>
+                                <div key={borderones.index}>
+                                    <DataOne
+                                        title={borderones.title}
+                                        descripition={borderones.descripition} />
+                                </div>
+                            </>
+                        )
+                    })}
+
+                    <Typography>
+                        <CardLogic datalogic={blogs} />
+                    </Typography>
+
+                    <Box p={10}>
+                        <Typography sx={{ marginBottom: 3, display: 'flex', justifyContent: 'space-between' }} variant='h5'>
+                            <Box sx={{ color: '#012f4e', borderBottom: 4, marginTop: 3 }} >
+                                Initiatives and Impact
+                            </Box>
+                            <Box sx={{ color: '#012f4e', borderBottom: 1, fontSize: 15, marginTop: 5, marginRight: 3 }}>
+                                <a href='#'> <b> VIEW ALL</b></a>
+                            </Box>
+                        </Typography>
+                        <Grid container spacing={6}>
+
+                            {cards.map((cardss: { index: React.Key | null | undefined; title: string; text: string; text1: string; text2: string; }) => {
+                                return (
+                                    <Grid key={cardss.index} item>
+                                        <HrCards
+                                            title={cardss.title}
+                                            descripition={cardss.text}
+                                            textOne={cardss.text1}
+                                            textTwo={cardss.text2} />
+                                    </Grid>
+                                );
+                            })}
+                        </Grid>
+                    </Box>
+                    <br />
+
+                    <br />
+                    <br />
+
+                    <Grid sx={{
+                        maxWidth: 1200,
+                        margin: "auto",
+                    }}>
+                        <Grid
+                            sx={{
+                                maxWidth: 1200,
+                                margin: "auto",
+
+                            }} container spacing={3} columnSpacing={{ xs: 3, sm: 2, md: 1 }}>
+                            {datapdf.map((datapdfs: { index: React.Key | null | undefined; yeardata: any; download: any; }) => {
+                                debugger
+                                return (
+                                    <div key={datapdfs.index}>
+                                        <RowAndColumnSpacing
+                                            yeardata={datapdfs.yeardata}
+                                            download={datapdfs.download} />
+
+                                    </div>
+                                );
+                            })}
+                        </Grid>
+                    </Grid>
+
+
+                    <br /><br />
+
+                    <footer className="containers " >
+                        <Grid >
+                            <Typography sx={{ fontSize: 12, display: 'flex', justifyContent: 'space-around', marginLeft: 8, width: '90%', padding: 10 }}   >
+                                <Typography sx={{ fontSize: 12 }}>
+                                    Home
+                                </Typography>
+                                <Grid >
+                                    <Brands data={brands} />
+                                </Grid>
+                                <Typography >
+                                    <Careers data={career} />
+                                </Typography>
+                                <Typography>
+                                    <Company data={company} />
+                                </Typography>
+                                <Typography>
+                                    <Contact data={contact} />
+                                </Typography>
+                                <Typography>
+                                    <Developments data={devlopmnt} />
+                                </Typography>
+                                <Typography>
+                                    <Investors data={investor} />
+                                </Typography>
+                                <Typography>
+                                    <PressRooms data={pressroom} />
+                                </Typography>
+                                <Typography>
+                                    <Responsibility data={responsibil} />
+                                </Typography>
+                            </Typography>
+                        </Grid >
+
+                        <Subfooter data={subfooter} />
+
+                        <JoinUs data={joinus} />
+
+                        <FooterDown data={footerdwn} />
+                    </footer>
+                </Typography>
             </div>
         </>
     )
@@ -171,7 +235,7 @@ export const getStaticProps: GetStaticProps = async () => {
     const subfooter = await getSubfooter();
     const joinus = await getJoinUS();
     const footerdwn = await getFooter();
-
+    const datapdf = await getPdf();
 
     return {
         props: {
@@ -191,7 +255,8 @@ export const getStaticProps: GetStaticProps = async () => {
             contact,
             subfooter,
             joinus,
-            footerdwn
+            footerdwn,
+            datapdf
 
         }
     }

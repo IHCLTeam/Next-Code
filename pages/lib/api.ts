@@ -26,6 +26,15 @@ const headtwo = `
 header`
 
 
+const pdfdatas = `
+yeardata,
+download,
+yeardata1,
+download1,
+yeardata2,
+download2,
+`
+
 //FOOTER DATA
 
 const footerbrnd = `
@@ -134,6 +143,13 @@ export async function witoutcard() {
 export async function getheadtwo() {
   const results = await client
     .fetch(`*[_type =="header"]{${headtwo}}`);
+  return results;
+}
+
+export async function getPdf() {
+  debugger
+  const results = await client
+    .fetch(`*[_type =="pdfData"]{${pdfdatas}}`);
   return results;
 }
 

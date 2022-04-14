@@ -6,6 +6,8 @@ import { makeStyles } from '@material-ui/styles';
 import { Box } from '@mui/material';
 
 
+
+
 interface Props {
     title: string;
     descripition: string;
@@ -19,10 +21,14 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+
+
 const DataOne = ({ title, descripition }: Props) => {
     const classes = useStyles();
     return (
         <>
+
+            
             <Paper className={classes.Grid}
                 sx={{
                     margin: 'auto',
